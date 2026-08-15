@@ -1,0 +1,67 @@
+import pandas as pd
+from faker import Faker
+import random
+from pathlib import Path
+
+# Create Faker object
+fake = Faker("en_IN")
+
+merchants = []
+
+cities = [
+    ("Hyderabad", "Telangana"),
+    ("Bengaluru", "Karnataka"),
+    ("Mumbai", "Maharashtra"),
+    ("Chennai", "Tamil Nadu"),
+    ("Delhi", "Delhi"),
+    ("Pune", "Maharashtra"),
+    ("Kolkata", "West Bengal"),
+    ("Ahmedabad", "Gujarat"),
+    ("Jaipur", "Rajasthan"),
+    ("Lucknow", "Uttar Pradesh")
+]
+
+merchant_categories = [
+    "Retail",
+    "Electronics",
+    "Grocery",
+    "Restaurants",
+    "Travel",
+    "Health & Wellness",
+    "Fashion",
+    "Entertainment",
+    "Education",
+    "Online Services"
+]
+
+merchant_status = [
+    "Active",
+    "Pending",
+    "Suspended"
+]
+
+for i in range(1, 101):
+    city, state = random.choice(cities)
+
+    phone_digits = ''.join(ch for ch in fake.phone_number() if ch.isdigit())[:10]
+
+    merchant = {
+        "merchant_id": f"M{i:06}",
+        "merchant_name": fake.company(),
+        "merchant_category": random.choice(merchant_categories),
+        "city": city,
+        "state": state,
+        "contact_person": fake.name(),
+        "email": fake.email(),
+        "phone": phone_digits,
+        "registration_date": fake.date_between(start_date="-5y", end_date="today"),
+        "merchant_status": random.choice(merchant_status)
+    }
+
+    merchants.append(merchant)
+
+output_path = Path(__file__).resolve().parents[1] / "data" / "raw" / "merchants.csv"
+df = pd.DataFrame(merchants)
+df.to_csv(output_path, index=False)
+
+print(f"✅ {len(merchants)} merchants saved to {output_path}")
