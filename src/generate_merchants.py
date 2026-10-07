@@ -2,9 +2,14 @@ import pandas as pd
 from faker import Faker
 import random
 from pathlib import Path
+from datetime import timedelta
+
+from generation_config import MERCHANT_SEED, REFERENCE_DATE
 
 # Create Faker object
 fake = Faker("en_IN")
+random.seed(MERCHANT_SEED)
+fake.seed_instance(MERCHANT_SEED)
 
 merchants = []
 
@@ -54,7 +59,10 @@ for i in range(1, 101):
         "contact_person": fake.name(),
         "email": fake.email(),
         "phone": phone_digits,
-        "registration_date": fake.date_between(start_date="-5y", end_date="today"),
+        "registration_date": fake.date_between(
+            start_date=REFERENCE_DATE - timedelta(days=365 * 5),
+            end_date=REFERENCE_DATE,
+        ),
         "merchant_status": random.choice(merchant_status)
     }
 
@@ -64,4 +72,4 @@ output_path = Path(__file__).resolve().parents[1] / "data" / "raw" / "merchants.
 df = pd.DataFrame(merchants)
 df.to_csv(output_path, index=False)
 
-print(f"✅ {len(merchants)} merchants saved to {output_path}")
+print(f"{len(merchants)} merchants saved to {output_path}")

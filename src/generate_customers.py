@@ -2,9 +2,14 @@ import pandas as pd
 from faker import Faker
 import random
 from pathlib import Path
+from datetime import timedelta
+
+from generation_config import CUSTOMER_SEED, REFERENCE_DATE
 
 # Create Faker object
 fake = Faker("en_IN")
+random.seed(CUSTOMER_SEED)
+fake.seed_instance(CUSTOMER_SEED)
 
 customers = []
 
@@ -53,8 +58,8 @@ for i in range(1, 101):
         "occupation": random.choice(occupations),
         "annual_income": random.randint(300000, 3000000),
         "registration_date": fake.date_between(
-            start_date="-3y",
-            end_date="today"
+            start_date=REFERENCE_DATE - timedelta(days=365 * 3),
+            end_date=REFERENCE_DATE,
         )
     }
 
@@ -65,4 +70,4 @@ df = pd.DataFrame(customers)
 output_path = Path(__file__).resolve().parents[1] / "data" / "raw" / "customers.csv"
 df.to_csv(output_path, index=False)
 
-print(f"✅ {len(customers)} customers saved to {output_path}")
+print(f"{len(customers)} customers saved to {output_path}")

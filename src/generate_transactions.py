@@ -1,12 +1,16 @@
 import random
+from datetime import timedelta
 from pathlib import Path
 
 import pandas as pd
 from faker import Faker
 
+from generation_config import REFERENCE_DATE, TRANSACTION_SEED
+
 
 fake = Faker("en_IN")
-random.seed(42)
+random.seed(TRANSACTION_SEED)
+fake.seed_instance(TRANSACTION_SEED)
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw"
@@ -23,12 +27,18 @@ def get_customer_map():
 
 customer_map = get_customer_map()
 merchant_records = merchants_df.to_dict("records")
+today = REFERENCE_DATE
+transaction_start_date = today - timedelta(days=18 * 30)
 
 
 def generate_amount(merchant_category):
     if merchant_category in {"Grocery", "Restaurants", "Retail"}:
         return round(random.uniform(80, 3500), 2)
-    if merchant_category in {"Education", "Online Services", "Health & Wellness"}:
+    if merchant_category in {
+        "Education",
+        "Online Services",
+        "Health & Wellness",
+    }:
         return round(random.uniform(200, 6000), 2)
     return round(random.uniform(300, 10000), 2)
 
@@ -45,12 +55,20 @@ def pick_status(merchant_category):
         weights["Completed"] = 68
         weights["Failed"] = 10
         weights["Pending"] = 14
-    return random.choices(list(weights.keys()), weights=list(weights.values()), k=1)[0]
+    return random.choices(
+        list(weights.keys()), weights=list(weights.values()), k=1
+    )[0]
 
 
 def pick_transaction_type():
     return random.choices(
-        ["Purchase", "Refund", "Bill Payment", "Wallet Top-up", "Merchant Payment"],
+        [
+            "Purchase",
+            "Refund",
+            "Bill Payment",
+            "Wallet Top-up",
+            "Merchant Payment",
+        ],
         weights=[70, 12, 8, 5, 5],
         k=1,
     )[0]
@@ -63,8 +81,9 @@ def pick_payment_method(card_type):
 
 
 transactions = []
+transaction_number = 1
 
-for index, card in cards_df.iterrows():
+for _, card in cards_df.iterrows():
     customer = customer_map.get(card["customer_id"])
     if customer is None:
         continue
@@ -83,13 +102,16 @@ for index, card in cards_df.iterrows():
         amount = generate_amount(merchant_category)
         txn_type = pick_transaction_type()
         status = pick_status(merchant_category)
-        transaction_date = fake.date_between(start_date="-18m", end_date="today")
+        transaction_date = fake.date_between_dates(
+            date_start=transaction_start_date,
+            date_end=today,
+        )
 
         if txn_type == "Refund" and status == "Completed":
             amount = round(amount * random.uniform(0.1, 0.6), 2)
 
         transaction = {
-            "transaction_id": f"TXN{index + 1:06}{random.randint(100, 999)}",
+            "transaction_id": f"TXN{transaction_number:09}",
             "card_id": card["card_id"],
             "customer_id": card["customer_id"],
             "merchant_id": merchant["merchant_id"],
@@ -110,7 +132,8 @@ for index, card in cards_df.iterrows():
             "description": fake.catch_phrase(),
         }
         transactions.append(transaction)
+        transaction_number += 1
 
 output_path = RAW_DIR / "transactions.csv"
 pd.DataFrame(transactions).to_csv(output_path, index=False)
-print(f"✅ {len(transactions)} transactions saved to {output_path}")
+print(f"{len(transactions)} transactions saved to {output_path}")

@@ -2,9 +2,14 @@ import pandas as pd
 from faker import Faker
 import random
 from pathlib import Path
+from datetime import timedelta
+
+from generation_config import CARD_SEED, REFERENCE_DATE
 
 # Create Faker object
 fake = Faker("en_IN")
+random.seed(CARD_SEED)
+fake.seed_instance(CARD_SEED)
 
 # Read customer dataset
 customers_df = pd.read_csv(Path(__file__).resolve().parents[1] / "data" / "raw" / "customers.csv")
@@ -41,10 +46,14 @@ for _, customer in customers_df.iterrows():
             "card_type": random.choice(card_types),
             "bank_name": random.choice(banks),
             "card_network": "Visa",
-            "issue_date": fake.date_between(start_date="-3y", end_date="today"),
-            "expiry_date": fake.date_between(start_date="+1y", end_date="+6y"),
-            "card_number": fake.credit_card_number(),
-            "cvv": fake.credit_card_security_code(),
+            "issue_date": fake.date_between(
+                start_date=REFERENCE_DATE - timedelta(days=365 * 3),
+                end_date=REFERENCE_DATE,
+            ),
+            "expiry_date": fake.date_between(
+                start_date=REFERENCE_DATE + timedelta(days=365),
+                end_date=REFERENCE_DATE + timedelta(days=365 * 6),
+            ),
             "card_status": random.choice(card_status)
         }
         cards.append(card)
@@ -55,4 +64,4 @@ output_path = Path(__file__).resolve().parents[1] / "data" / "raw" / "cards.csv"
 df = pd.DataFrame(cards)
 df.to_csv(output_path, index=False)
 
-print(f"✅ {len(cards)} cards saved to {output_path}")
+print(f"{len(cards)} cards saved to {output_path}")

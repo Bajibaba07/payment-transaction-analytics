@@ -1,0 +1,101 @@
+customer_id,first_name,last_name,gender,age,email,phone,city,state,occupation,annual_income,registration_date
+C000001,Pahal,Balay,Male,65,chandertejas@example.org,1043321819,Bengaluru,Karnataka,Bank Manager,1327150,2025-12-01
+C000002,Nathaniel,Sami,Male,65,arunima23@example.com,838637940,Chennai,Tamil Nadu,Doctor,2587433,2024-03-14
+C000003,Kritika,Brar,Female,20,janaki93@example.net,9161559407,Bengaluru,Karnataka,Software Engineer,692986,2024-01-24
+C000004,Kamala,Pant,Male,50,amarabora@example.net,9134131647,Chennai,Tamil Nadu,Marketing Executive,411299,2026-06-20
+C000005,Veer,Balay,Male,63,nandini41@example.org,9183276483,Jaipur,Rajasthan,Civil Engineer,2059593,2026-03-07
+C000006,Adya,Sangha,Female,55,opathak@example.org,5376724238,Chennai,Tamil Nadu,Bank Manager,327257,2025-12-07
+C000007,Upadhriti,Wadhwa,Female,39,advay18@example.com,101226916,Mumbai,Maharashtra,Bank Manager,952128,2026-06-29
+C000008,Hitesh,Misra,Female,24,michaelprakash@example.org,146270482,Chennai,Tamil Nadu,Doctor,1893530,2026-01-22
+C000009,Wridesh,Brar,Female,40,sunderekapad@example.net,957015430,Bengaluru,Karnataka,Marketing Executive,1409480,2024-04-20
+C000010,Devika,Rastogi,Female,52,raksha87@example.org,9178248963,Hyderabad,Telangana,Doctor,1887688,2024-10-27
+C000011,Daniel,Karnik,Female,58,balayganga@example.org,9115098393,Bengaluru,Karnataka,Marketing Executive,1816807,2025-12-14
+C000012,Niharika,Gupta,Male,63,chatterjeeraagini@example.com,9147382997,Lucknow,Uttar Pradesh,Doctor,492201,2025-07-27
+C000013,Saumya,Dey,Female,23,rgoswami@example.com,701065133,Chennai,Tamil Nadu,Data Analyst,723630,2024-10-30
+C000014,Vedika,Srivastava,Female,47,nandinibhargava@example.org,9178108013,Kolkata,West Bengal,Student,982220,2025-05-18
+C000015,Teerth,Bhardwaj,Female,31,murthydakshesh@example.org,9164746872,Pune,Maharashtra,Bank Manager,599483,2026-04-02
+C000016,Wahab,Raval,Male,52,koshybalveer@example.net,882081219,Lucknow,Uttar Pradesh,Data Analyst,985359,2024-02-12
+C000017,Karan,Mital,Female,35,wmutti@example.org,998543534,Ahmedabad,Gujarat,Civil Engineer,1221132,2023-10-22
+C000018,Ekapad,Konda,Male,32,bhavani27@example.net,991183842,Pune,Maharashtra,Software Engineer,1623105,2026-10-04
+C000019,Nachiket,Magar,Female,22,shivansh53@example.net,980841241,Kolkata,West Bengal,Data Analyst,2678925,2026-06-19
+C000020,Kalpit,Lala,Male,59,riyasane@example.net,874016400,Pune,Maharashtra,Accountant,1959400,2023-10-23
+C000021,Benjamin,Morar,Male,34,balveer53@example.net,9112805982,Ahmedabad,Gujarat,Teacher,1334430,2024-10-29
+C000022,Aryan,Gola,Female,65,nisha34@example.org,1586923226,Jaipur,Rajasthan,Marketing Executive,2096981,2026-10-01
+C000023,Arjun,Hans,Female,41,rnarasimhan@example.org,9160733754,Lucknow,Uttar Pradesh,Data Analyst,880205,2024-12-14
+C000024,Balvan,Chopra,Female,23,upai@example.com,868501429,Jaipur,Rajasthan,Software Engineer,759901,2025-08-15
+C000025,Ronith,Patla,Male,68,qboase@example.com,8169340608,Mumbai,Maharashtra,Business Owner,2801520,2026-06-02
+C000026,Rehaan,Salvi,Female,42,nghosh@example.net,148465648,Bengaluru,Karnataka,Marketing Executive,2263143,2025-01-17
+C000027,Riya,Sathe,Female,53,yastisolanki@example.net,804436995,Jaipur,Rajasthan,Software Engineer,780464,2024-06-27
+C000028,Manan,Bakshi,Female,67,kondavaishnavi@example.net,1489513433,Jaipur,Rajasthan,Student,767883,2024-01-29
+C000029,Pavani,Kanda,Female,28,zarnashetty@example.org,693676320,Delhi,Delhi,Accountant,313611,2026-02-19
+C000030,Yamini,Sandhu,Male,50,vdutt@example.com,9117278895,Delhi,Delhi,Doctor,2922699,2025-09-06
+C000031,Anita,Nayak,Male,27,faris22@example.org,348734714,Delhi,Delhi,Student,977585,2025-05-25
+C000032,Samuel,Salvi,Male,56,wbahri@example.net,2316658760,Jaipur,Rajasthan,Student,2349360,2025-05-20
+C000033,Theodore,Mahajan,Male,41,bsunder@example.com,54668893,Hyderabad,Telangana,Bank Manager,1304335,2025-03-13
+C000034,Avi,Chacko,Male,54,ddeshmukh@example.org,6272980699,Hyderabad,Telangana,Doctor,659256,2023-12-25
+C000035,Finn,Singhal,Male,66,zachariacharles@example.com,653755646,Ahmedabad,Gujarat,Civil Engineer,827477,2024-09-20
+C000036,Urvashi,Contractor,Female,53,udyatikunda@example.com,1003309232,Mumbai,Maharashtra,Teacher,1411728,2024-06-24
+C000037,Mekhala,Issac,Female,31,kibeharsh@example.net,9124190496,Jaipur,Rajasthan,Civil Engineer,1143688,2025-01-18
+C000038,Harita,Arora,Female,60,gsuri@example.com,9190586518,Delhi,Delhi,Student,2137524,2025-04-22
+C000039,Rajata,Loyal,Female,25,yatan14@example.com,7262849877,Jaipur,Rajasthan,Data Analyst,1242448,2024-10-20
+C000040,Isha,Kuruvilla,Female,19,ati94@example.net,996507527,Bengaluru,Karnataka,Marketing Executive,2623315,2023-10-23
+C000041,Anay,Chander,Male,18,timothy63@example.com,3136783777,Chennai,Tamil Nadu,Doctor,2947037,2026-08-04
+C000042,Anika,Mohan,Male,22,vihaan13@example.com,5788568557,Hyderabad,Telangana,Software Engineer,1685917,2024-04-10
+C000043,Harish,Hari,Male,35,utkarsh52@example.com,8233749894,Bengaluru,Karnataka,Accountant,1198574,2023-10-29
+C000044,Advik,Mane,Male,64,csrinivas@example.com,8240084271,Jaipur,Rajasthan,Marketing Executive,2716806,2024-07-20
+C000045,Manthan,Modi,Male,68,kotharijagat@example.net,9147116719,Ahmedabad,Gujarat,Accountant,2007333,2025-07-15
+C000046,Dalaja,Bhasin,Male,24,johalsiddharth@example.com,9938677496,Chennai,Tamil Nadu,Business Owner,1786031,2026-07-29
+C000047,Upma,Manne,Female,47,katabhavya@example.net,9123281206,Kolkata,West Bengal,Software Engineer,712794,2024-12-20
+C000048,Manthan,Lata,Female,64,ekbalbhasin@example.org,7134936183,Hyderabad,Telangana,Student,758307,2025-01-27
+C000049,Wakeeta,Sarma,Male,30,baralrachana@example.net,9471746488,Chennai,Tamil Nadu,Civil Engineer,2181621,2025-02-19
+C000050,Parth,Singhal,Female,29,lmall@example.net,4013990490,Mumbai,Maharashtra,Bank Manager,2240402,2025-08-15
+C000051,Nisha,Tandon,Male,46,nandini80@example.com,7175655125,Chennai,Tamil Nadu,Civil Engineer,710658,2024-02-21
+C000052,Raghav,Vasa,Male,23,wishi70@example.org,451680876,Hyderabad,Telangana,Data Analyst,997559,2024-11-25
+C000053,Akshay,Reddy,Female,48,karishaan@example.com,2477109324,Kolkata,West Bengal,Data Analyst,1982084,2024-04-07
+C000054,Maanav,Rajagopal,Male,42,yashodadeshpande@example.org,2748467737,Hyderabad,Telangana,Software Engineer,1937547,2024-12-10
+C000055,Sanya,Yohannan,Female,36,vpai@example.net,584044997,Delhi,Delhi,Business Owner,2631061,2026-01-29
+C000056,Urvashi,Raj,Male,30,fdoshi@example.org,753396360,Ahmedabad,Gujarat,Bank Manager,1213103,2024-04-21
+C000057,Mohammed,Borde,Male,65,vlanka@example.net,9517187026,Hyderabad,Telangana,Student,539768,2026-09-18
+C000058,Wahab,Mani,Female,50,gautamsaraf@example.org,158657809,Hyderabad,Telangana,Civil Engineer,960320,2026-06-18
+C000059,Kavya,Sankar,Male,29,yashwali@example.com,1724005045,Hyderabad,Telangana,Doctor,2795758,2026-03-05
+C000060,Luke,Kata,Male,43,dkumar@example.com,2221969379,Bengaluru,Karnataka,Doctor,2689391,2026-08-08
+C000061,Zashil,Shan,Male,57,rushil67@example.org,9174821759,Chennai,Tamil Nadu,Doctor,2058356,2024-10-10
+C000062,Chandran,Taneja,Female,34,victor95@example.org,959440640,Lucknow,Uttar Pradesh,Data Analyst,1617782,2026-06-22
+C000063,Karan,Chana,Female,43,eta62@example.org,9194210470,Chennai,Tamil Nadu,Teacher,1558278,2024-04-30
+C000064,Upadhriti,Borra,Female,66,upkaarranganathan@example.net,5884247451,Ahmedabad,Gujarat,Doctor,339071,2025-04-28
+C000065,Kamya,Chokshi,Male,22,urishillabakshi@example.net,9160481754,Ahmedabad,Gujarat,Civil Engineer,1194033,2026-02-26
+C000066,Daksha,Tailor,Female,26,chatterjeewahab@example.net,931746120,Jaipur,Rajasthan,Student,588531,2024-05-05
+C000067,Nikita,Mammen,Female,36,prabhakarteerth@example.com,758692617,Chennai,Tamil Nadu,Teacher,2137879,2025-08-28
+C000068,Suhani,Chand,Female,57,anshbedi@example.com,9151585064,Jaipur,Rajasthan,Civil Engineer,332812,2024-10-20
+C000069,Aarnav,Malhotra,Female,60,kalpitzachariah@example.com,9193183933,Jaipur,Rajasthan,Doctor,863257,2024-07-05
+C000070,Charles,Date,Male,24,hvora@example.net,9102053950,Delhi,Delhi,Civil Engineer,951995,2024-01-14
+C000071,Charvi,Shanker,Female,56,bhatvarenya@example.com,758917839,Delhi,Delhi,Data Analyst,1738144,2025-07-31
+C000072,Anvi,Nair,Female,50,swali@example.com,1771159212,Chennai,Tamil Nadu,Accountant,1353278,2025-12-01
+C000073,Sudiksha,Rastogi,Male,58,uchandran@example.com,6118367365,Hyderabad,Telangana,Business Owner,1460480,2025-02-04
+C000074,Kashish,De,Male,39,narayanjason@example.com,4527111161,Hyderabad,Telangana,Teacher,2972247,2025-04-09
+C000075,Mohammed,Subramaniam,Male,65,hritikpalla@example.net,6049451983,Delhi,Delhi,Accountant,2613915,2025-04-30
+C000076,Amara,Balakrishnan,Male,25,anjalimore@example.com,9149368998,Kolkata,West Bengal,Doctor,925178,2025-04-05
+C000077,Krisha,Saini,Male,41,kom@example.com,9122961201,Jaipur,Rajasthan,Marketing Executive,2617458,2025-02-03
+C000078,Anita,Savant,Female,26,msunder@example.com,5991022901,Mumbai,Maharashtra,Software Engineer,1592929,2025-07-12
+C000079,Darika,Bath,Male,40,meghabhakta@example.org,381561497,Pune,Maharashtra,Data Analyst,1346603,2024-08-20
+C000080,Kai,Rai,Female,67,xitipandya@example.org,324451076,Bengaluru,Karnataka,Civil Engineer,2004470,2025-06-15
+C000081,Omisha,Mann,Male,33,ravelansh@example.com,607159696,Lucknow,Uttar Pradesh,Teacher,1042611,2024-06-30
+C000082,Farhan,Randhawa,Male,29,harinakshi35@example.org,7516136968,Kolkata,West Bengal,Student,2026850,2024-02-03
+C000083,Aahana,Hora,Female,28,michaelborra@example.org,1883552312,Chennai,Tamil Nadu,Doctor,1904496,2026-06-09
+C000084,Ekansh,Singh,Female,32,ymitter@example.com,799799552,Hyderabad,Telangana,Data Analyst,2230651,2026-04-13
+C000085,Faraj,Chana,Female,70,lshere@example.net,9158147700,Pune,Maharashtra,Data Analyst,1235009,2023-12-10
+C000086,Hemal,Chad,Male,43,balveerkota@example.net,935978207,Hyderabad,Telangana,Student,1468545,2025-08-18
+C000087,Charles,Natt,Female,40,narayangirindra@example.net,889255466,Bengaluru,Karnataka,Civil Engineer,1976372,2026-08-26
+C000088,Manya,Dayal,Female,19,mukherjeekrisha@example.net,449251925,Jaipur,Rajasthan,Doctor,1395615,2025-03-01
+C000089,Harita,Sunder,Female,20,upkaardevan@example.org,9181685054,Mumbai,Maharashtra,Doctor,2802201,2024-02-04
+C000090,Mitesh,Gaba,Female,64,noahsarma@example.org,188805929,Kolkata,West Bengal,Student,2130368,2025-07-07
+C000091,Rishi,Pillai,Male,42,xshenoy@example.com,379473834,Lucknow,Uttar Pradesh,Marketing Executive,1097248,2025-05-23
+C000092,Harshil,Varty,Male,63,manefiyaz@example.org,8623924075,Delhi,Delhi,Business Owner,307093,2024-12-04
+C000093,Meghana,Thakkar,Male,41,warinder61@example.com,826137506,Jaipur,Rajasthan,Business Owner,593491,2024-09-20
+C000094,Saumya,Ahluwalia,Female,60,bahlaahana@example.org,9151522047,Pune,Maharashtra,Doctor,1559642,2024-05-27
+C000095,Oni,Shankar,Female,60,choudhryxalak@example.net,9861434103,Jaipur,Rajasthan,Business Owner,1668110,2026-01-17
+C000096,Omaja,Grover,Female,53,viswanathanjalsa@example.org,9189324609,Kolkata,West Bengal,Teacher,1104635,2026-01-02
+C000097,Amol,Parikh,Female,61,paiwridesh@example.net,8880670654,Kolkata,West Bengal,Teacher,2881656,2026-07-24
+C000098,Varenya,Gopal,Female,43,devshankar@example.org,1952058527,Lucknow,Uttar Pradesh,Civil Engineer,301702,2025-01-05
+C000099,Balhaar,Halder,Female,31,ishanvi05@example.com,9103054868,Delhi,Delhi,Business Owner,2732632,2024-04-18
+C000100,Amara,Butala,Female,47,bbrar@example.net,667652775,Lucknow,Uttar Pradesh,Accountant,2154552,2024-07-14

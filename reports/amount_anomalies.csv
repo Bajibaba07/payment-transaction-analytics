@@ -1,0 +1,1 @@
+transaction_id,card_id,customer_id,merchant_id,merchant_name,merchant_category,transaction_date,amount,currency,transaction_type,transaction_status,payment_method,merchant_city,merchant_state,bank_name,card_type,customer_city,customer_state,description,transaction_month,is_successful,is_failure,amount_z_score,amount_anomaly

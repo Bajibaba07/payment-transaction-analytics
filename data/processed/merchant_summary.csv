@@ -1,0 +1,101 @@
+merchant_id,merchant_name,merchant_category,transaction_count,total_amount,completed_amount,failed_transactions
+M000092,"Shanker, Lalla and Bora",Fashion,11,73670.62,60203.4,0
+M000060,"Gala, Balan and Ramanathan",Fashion,18,81778.09,59307.14000000001,2
+M000089,Savant Ltd,Travel,11,62219.9,54847.39,0
+M000001,"Andra, Chaudhry and Dugar",Education,15,57334.65,53184.99,0
+M000048,Chad Inc,Travel,11,69855.32,52842.93,1
+M000029,Dhillon-Chada,Electronics,13,52123.68,51136.149999999994,1
+M000068,Padmanabhan Group,Fashion,7,49043.64,49043.64,0
+M000085,Sahni-Nagar,Travel,10,56437.68,48736.130000000005,1
+M000028,Mane and Sons,Electronics,11,54489.63,48124.72,1
+M000042,Mahajan Inc,Fashion,11,71312.02,47282.66,1
+M000086,"Barad, Keer and Behl",Entertainment,10,50661.05,44890.61,1
+M000014,Karnik-Walla,Electronics,9,51883.03,43999.17,0
+M000084,Joshi-Kata,Entertainment,15,64198.25,41684.310000000005,2
+M000026,"Ray, Saraf and Barad",Education,13,48352.44,39481.58,0
+M000041,Patla-Anand,Travel,9,50462.68,39406.950000000004,0
+M000072,Jani and Sons,Electronics,11,58174.229999999996,38594.91,1
+M000011,Krishnamurthy and Sons,Online Services,14,51988.11,37770.18,4
+M000079,"Agarwal, Dalal and Krishnamurthy",Fashion,6,37663.93,37663.92999999999,0
+M000074,"Halder, Oommen and Varty",Travel,8,48355.46,37402.38,1
+M000052,"Pant, Mall and Grewal",Education,17,54010.32,37122.69,1
+M000067,Dewan-Iyer,Electronics,8,42013.35,34480.34,0
+M000019,Sundaram LLC,Health & Wellness,15,53872.76,34232.45,1
+M000095,Sehgal-Bali,Education,15,49271.96,34158.88,2
+M000006,"Pai, Sawhney and Chad",Travel,10,52447.2,33897.14,1
+M000070,Kala-Borah,Fashion,10,61456.72,33128.490000000005,2
+M000034,"Kala, Rege and Narula",Electronics,11,49552.52,32760.969999999998,1
+M000009,Mani-Babu,Travel,10,47085.89,32265.79,1
+M000087,Chowdhury Inc,Entertainment,7,34651.98,32109.44,0
+M000059,Parekh-Cherian,Fashion,7,38614.86,29622.479999999996,0
+M000003,Shah-Pal,Travel,11,34866.46,29434.350000000002,0
+M000053,Dhingra Inc,Education,15,39831.520000000004,29372.269999999997,0
+M000093,Nath Inc,Travel,5,28674.02,28674.02,0
+M000083,Wason Ltd,Entertainment,7,28657.97,28657.97,0
+M000081,"Madan, Balan and Bahl",Travel,7,42428.59,28611.1,2
+M000005,Bhattacharyya-Vala,Electronics,8,28334.26,28334.26,0
+M000036,Patla-Date,Grocery,18,33674.270000000004,28150.190000000002,1
+M000027,"Dasgupta, Padmanabhan and Mahajan",Online Services,10,29125.07,27414.54,1
+M000038,Gill-Kapur,Entertainment,7,33909.26,25935.200000000004,0
+M000098,"Contractor, Butala and Khatri",Entertainment,6,25682.79,25682.79,0
+M000099,Cheema-Dugar,Online Services,14,42430.26,25606.24,1
+M000016,Bala-Natarajan,Travel,9,47061.56,25011.16,1
+M000091,Dhaliwal-Pandey,Health & Wellness,11,37353.0,25006.33,4
+M000043,Nadkarni Inc,Education,14,36851.43,24914.27,1
+M000080,Krishnamurthy LLC,Online Services,14,42637.0,24528.559999999998,1
+M000049,Nayak PLC,Travel,11,40880.73,24512.91,1
+M000039,Chaudhuri-Om,Education,9,30358.88,24172.699999999997,2
+M000057,Bora-Grewal,Health & Wellness,7,24880.29,23990.13,0
+M000088,Manda-Borra,Travel,12,47214.74,22001.600000000002,1
+M000050,Aggarwal-Sule,Education,9,25397.96,21877.82,0
+M000054,Sama Ltd,Grocery,14,26742.5,20765.08,2
+M000051,"Hegde, Choudhury and Shenoy",Retail,14,24006.73,20541.609999999997,0
+M000008,"Kakar, Dayal and Ganesan",Health & Wellness,14,35336.93,19960.0,0
+M000025,Peri-Sagar,Online Services,9,27641.46,19754.39,0
+M000044,"Sem, Ray and Ganesh",Health & Wellness,9,23812.760000000002,19575.239999999998,0
+M000023,"Setty, Dalal and Mukherjee",Travel,6,29863.91,19513.93,1
+M000004,"Bhargava, Sant and Bava",Electronics,7,45392.54,19246.899999999998,0
+M000013,"Bora, Mukherjee and Rajagopal",Retail,13,26054.68,18460.199999999997,2
+M000094,Raju Ltd,Electronics,9,33570.05,18351.879999999997,0
+M000033,"Deshmukh, Sharma and Toor",Online Services,10,34238.86,16979.18,2
+M000040,Mitra-Bhatnagar,Education,9,26599.68,16913.300000000003,1
+M000100,"Banik, Raman and Sarma",Travel,8,47631.840000000004,16906.760000000002,1
+M000046,Nanda-Varty,Electronics,5,19236.1,15923.68,0
+M000065,Basu Group,Online Services,6,25110.18,15736.62,0
+M000007,"Chowdhury, Nagar and Nanda",Online Services,9,24684.33,15719.64,0
+M000073,Bava-Bobal,Online Services,10,20358.98,14962.87,2
+M000047,Raval and Sons,Health & Wellness,7,20938.62,14869.990000000002,0
+M000032,Chand-Bajaj,Grocery,13,16883.15,14861.78,1
+M000078,Gupta-Shetty,Grocery,10,20531.61,14419.4,2
+M000010,Lall-Ravel,Electronics,9,29371.309999999998,14277.439999999999,0
+M000090,Kara-Sahota,Grocery,9,17173.78,14209.32,1
+M000020,Dutta-Apte,Online Services,8,25883.45,12809.52,1
+M000058,"Rattan, Merchant and Mishra",Grocery,8,16393.74,12799.190000000002,1
+M000030,"Varty, Rout and Banerjee",Retail,14,27263.4,12705.279999999999,1
+M000096,"Goyal, Chahal and Sachdeva",Grocery,9,11936.3,11936.3,0
+M000056,Kaul Ltd,Health & Wellness,7,19648.83,11707.43,2
+M000031,"Varma, Seth and Bora",Online Services,5,17728.68,11690.76,1
+M000022,Pingle-Ramachandran,Health & Wellness,13,41316.46,11408.64,1
+M000037,Sane PLC,Restaurants,12,21818.75,10977.01,1
+M000021,Balan-Bali,Restaurants,9,20707.97,9946.310000000001,1
+M000024,"Balasubramanian, Khanna and Sani",Restaurants,7,11575.449999999999,9708.72,0
+M000063,Chatterjee-Borde,Retail,11,15922.08,9253.060000000001,1
+M000064,"Sandal, Sami and Kanda",Retail,8,12893.78,8821.1,0
+M000076,Lal-Madan,Retail,9,14709.96,8645.470000000001,0
+M000075,Keer Inc,Restaurants,5,8527.73,8527.73,0
+M000055,Bala LLC,Grocery,15,28299.9,8420.47,4
+M000045,Kala-Das,Grocery,7,7975.65,7059.5599999999995,1
+M000061,Mukhopadhyay-Sami,Entertainment,5,8695.52,6463.01,0
+M000002,Char-Sood,Grocery,11,15168.98,6188.19,0
+M000035,Ghose and Sons,Retail,9,13555.14,6169.79,1
+M000062,Buch-Lad,Grocery,7,8856.42,5273.8099999999995,1
+M000017,Sidhu-Yogi,Retail,7,9700.92,5036.33,2
+M000012,Kade Ltd,Health & Wellness,5,15052.02,4906.2699999999995,1
+M000071,Contractor-Dayal,Grocery,8,12527.32,4736.73,1
+M000082,"Bobal, Pai and Luthra",Grocery,8,13828.28,4612.959999999999,0
+M000018,Guha Group,Retail,8,9898.81,4288.360000000001,1
+M000097,Sanghvi-Parmer,Health & Wellness,7,21635.49,3714.25,1
+M000069,Sarraf Ltd,Retail,4,5266.870000000001,3542.11,1
+M000015,Subramanian-Verma,Restaurants,3,5147.76,3242.09,0
+M000077,Boase and Sons,Grocery,4,5676.37,2400.1,1
+M000066,"Iyengar, Ratta and Parekh",Restaurants,4,2264.65,2264.65,0

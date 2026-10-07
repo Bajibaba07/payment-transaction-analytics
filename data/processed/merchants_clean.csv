@@ -1,0 +1,101 @@
+merchant_id,merchant_name,merchant_category,city,state,contact_person,email,phone,registration_date,merchant_status
+M000001,"Andra, Chaudhry and Dugar",Education,Kolkata,West Bengal,Kritika Ravel,ishita15@example.com,881263403,2023-02-14,Suspended
+M000002,Char-Sood,Grocery,Bengaluru,Karnataka,Rayaan Gulati,aarnakota@example.org,9181914514,2022-02-19,Pending
+M000003,Shah-Pal,Travel,Chennai,Tamil Nadu,Arunima Dugar,kapoorakshay@example.net,6055779823,2026-07-01,Active
+M000004,"Bhargava, Sant and Bava",Electronics,Chennai,Tamil Nadu,Jason Dhar,abdulmemon@example.net,4593615513,2022-04-21,Suspended
+M000005,Bhattacharyya-Vala,Electronics,Hyderabad,Telangana,Vinaya Bhattacharyya,vritti46@example.com,106428304,2024-05-03,Active
+M000006,"Pai, Sawhney and Chad",Travel,Jaipur,Rajasthan,Kiaan Mallick,xavier03@example.net,7154222176,2025-12-01,Suspended
+M000007,"Chowdhury, Nagar and Nanda",Online Services,Kolkata,West Bengal,Maanav Agrawal,ravineha@example.com,9184627423,2026-08-30,Pending
+M000008,"Kakar, Dayal and Ganesan",Health & Wellness,Pune,Maharashtra,Amol Brahmbhatt,chandranmahika@example.net,8733220540,2026-01-12,Active
+M000009,Mani-Babu,Travel,Pune,Maharashtra,Samesh Dada,amolgandhi@example.org,9146242915,2023-03-30,Suspended
+M000010,Lall-Ravel,Electronics,Mumbai,Maharashtra,Orinder Srinivasan,bhavaniseshadri@example.com,1264653942,2025-10-14,Suspended
+M000011,Krishnamurthy and Sons,Online Services,Bengaluru,Karnataka,Owen Pai,patlaumang@example.com,497767714,2025-06-03,Active
+M000012,Kade Ltd,Health & Wellness,Delhi,Delhi,Harinakshi Sawhney,kahluwalia@example.net,48610384,2022-03-05,Active
+M000013,"Bora, Mukherjee and Rajagopal",Retail,Delhi,Delhi,Nicholas Sastry,david38@example.org,239505207,2024-10-23,Pending
+M000014,Karnik-Walla,Electronics,Kolkata,West Bengal,Ayushman Basu,ramanamol@example.net,9100088571,2026-07-07,Pending
+M000015,Subramanian-Verma,Restaurants,Ahmedabad,Gujarat,Faraj Walia,pchowdhury@example.net,1193998680,2022-11-27,Active
+M000016,Bala-Natarajan,Travel,Mumbai,Maharashtra,Oviya Atwal,iratta@example.org,9114443851,2025-02-17,Suspended
+M000017,Sidhu-Yogi,Retail,Chennai,Tamil Nadu,Jeevika Dutt,subramanianvrinda@example.net,9133956565,2022-09-04,Active
+M000018,Guha Group,Retail,Kolkata,West Bengal,William Wable,eshanadugar@example.com,434998370,2021-10-31,Suspended
+M000019,Sundaram LLC,Health & Wellness,Pune,Maharashtra,Maanas Randhawa,mugdha58@example.org,9181678939,2024-12-08,Pending
+M000020,Dutta-Apte,Online Services,Ahmedabad,Gujarat,Aashi Swaminathan,ybanerjee@example.com,101858068,2026-05-31,Suspended
+M000021,Balan-Bali,Restaurants,Mumbai,Maharashtra,Indali Sant,bmane@example.net,9105640217,2022-07-01,Pending
+M000022,Pingle-Ramachandran,Health & Wellness,Ahmedabad,Gujarat,Michael Munshi,hmemon@example.com,63176783,2022-03-10,Suspended
+M000023,"Setty, Dalal and Mukherjee",Travel,Hyderabad,Telangana,Yoshita Behl,farhanbatta@example.net,3964086152,2022-07-17,Active
+M000024,"Balasubramanian, Khanna and Sani",Restaurants,Hyderabad,Telangana,Balendra Garg,shahkamya@example.com,9122240650,2026-05-04,Active
+M000025,Peri-Sagar,Online Services,Lucknow,Uttar Pradesh,Sachi Mani,shroffmax@example.com,3552170063,2023-03-17,Suspended
+M000026,"Ray, Saraf and Barad",Education,Jaipur,Rajasthan,Joshua Chander,zkarnik@example.org,254031806,2026-07-14,Pending
+M000027,"Dasgupta, Padmanabhan and Mahajan",Online Services,Pune,Maharashtra,Maanas Divan,ojasvi91@example.org,1235190406,2022-09-25,Active
+M000028,Mane and Sons,Electronics,Kolkata,West Bengal,Yash Bhardwaj,mitali95@example.org,4413218606,2023-10-13,Pending
+M000029,Dhillon-Chada,Electronics,Pune,Maharashtra,Balendra Thaman,misrakashvi@example.org,9159042637,2025-05-02,Active
+M000030,"Varty, Rout and Banerjee",Retail,Lucknow,Uttar Pradesh,Dakshesh Rattan,vsur@example.com,6696689965,2025-04-14,Pending
+M000031,"Varma, Seth and Bora",Online Services,Hyderabad,Telangana,Benjamin Vala,vansha60@example.com,636271322,2026-02-02,Pending
+M000032,Chand-Bajaj,Grocery,Bengaluru,Karnataka,Omkaar Manda,rpurohit@example.com,9110295625,2023-06-05,Active
+M000033,"Deshmukh, Sharma and Toor",Online Services,Hyderabad,Telangana,Rehaan Vig,ekansh70@example.org,3155665177,2025-04-17,Suspended
+M000034,"Kala, Rege and Narula",Electronics,Delhi,Delhi,Nachiket Seshadri,sbhatia@example.com,79835795,2023-02-14,Pending
+M000035,Ghose and Sons,Retail,Bengaluru,Karnataka,Warinder Ghosh,luthraviraj@example.net,680171558,2025-05-22,Pending
+M000036,Patla-Date,Grocery,Delhi,Delhi,Rishi Bala,agastya52@example.net,9150900378,2024-04-18,Suspended
+M000037,Sane PLC,Restaurants,Jaipur,Rajasthan,Vedhika Sule,jeevikanaidu@example.org,9188401650,2025-08-23,Active
+M000038,Gill-Kapur,Entertainment,Delhi,Delhi,Ayush Tak,shankernandini@example.net,1839447266,2022-06-25,Pending
+M000039,Chaudhuri-Om,Education,Bengaluru,Karnataka,Ekapad Jani,kashishandra@example.net,5592986424,2026-08-29,Suspended
+M000040,Mitra-Bhatnagar,Education,Pune,Maharashtra,Omkaar Naidu,ahluwaliayagnesh@example.com,6920371189,2022-06-22,Pending
+M000041,Patla-Anand,Travel,Bengaluru,Karnataka,Anvi Sharma,chandresh58@example.org,2232947295,2026-02-09,Pending
+M000042,Mahajan Inc,Fashion,Delhi,Delhi,Meghana Kalla,rbhat@example.org,113997876,2024-10-10,Pending
+M000043,Nadkarni Inc,Education,Delhi,Delhi,Dakshesh Vaidya,bhavika52@example.com,9150478004,2023-08-03,Pending
+M000044,"Sem, Ray and Ganesh",Health & Wellness,Bengaluru,Karnataka,Bishakha Gera,nadigtara@example.com,1105714960,2025-10-02,Pending
+M000045,Kala-Das,Grocery,Mumbai,Maharashtra,Inaya Toor,ekbalshukla@example.com,9186111668,2023-05-23,Suspended
+M000046,Nanda-Varty,Electronics,Mumbai,Maharashtra,Banjeet Bains,tsodhi@example.net,3971485900,2024-11-02,Pending
+M000047,Raval and Sons,Health & Wellness,Kolkata,West Bengal,Balendra Goyal,mvenkatesh@example.net,342969119,2024-10-13,Pending
+M000048,Chad Inc,Travel,Bengaluru,Karnataka,Saksham Dhingra,ojassengupta@example.net,144530941,2022-12-01,Suspended
+M000049,Nayak PLC,Travel,Mumbai,Maharashtra,Ayaan Srivastava,daminiparmer@example.com,344139117,2024-01-17,Suspended
+M000050,Aggarwal-Sule,Education,Jaipur,Rajasthan,Samar Lala,saumya46@example.net,2265579509,2024-10-16,Pending
+M000051,"Hegde, Choudhury and Shenoy",Retail,Chennai,Tamil Nadu,Neha Merchant,vyasbenjamin@example.net,9131987978,2024-02-07,Suspended
+M000052,"Pant, Mall and Grewal",Education,Chennai,Tamil Nadu,Bhavini Sarin,odayal@example.org,9120446761,2026-05-29,Pending
+M000053,Dhingra Inc,Education,Bengaluru,Karnataka,Aayush Bandi,rakshamall@example.com,9205995269,2024-08-26,Pending
+M000054,Sama Ltd,Grocery,Kolkata,West Bengal,Gagan Halder,bhavika00@example.com,8605794536,2024-01-05,Pending
+M000055,Bala LLC,Grocery,Delhi,Delhi,Ayush Sami,ojasvi34@example.net,5831071562,2025-10-01,Active
+M000056,Kaul Ltd,Health & Wellness,Lucknow,Uttar Pradesh,Yash Tella,lsant@example.com,7222736269,2025-07-30,Suspended
+M000057,Bora-Grewal,Health & Wellness,Bengaluru,Karnataka,Ekani Kalla,yauvani38@example.com,9190459638,2024-04-09,Pending
+M000058,"Rattan, Merchant and Mishra",Grocery,Ahmedabad,Gujarat,Chandani Ahuja,aarush51@example.com,401218765,2024-08-03,Active
+M000059,Parekh-Cherian,Fashion,Bengaluru,Karnataka,Balveer Sankaran,ushukla@example.net,9188918872,2025-11-19,Suspended
+M000060,"Gala, Balan and Ramanathan",Fashion,Kolkata,West Bengal,Shivansh Pall,qarin68@example.com,9135457284,2023-05-19,Suspended
+M000061,Mukhopadhyay-Sami,Entertainment,Jaipur,Rajasthan,Advay Dora,bhavikasubramaniam@example.net,532206998,2023-10-18,Active
+M000062,Buch-Lad,Grocery,Chennai,Tamil Nadu,Jagat Bail,ranbirchoudhury@example.org,9183121652,2026-01-20,Suspended
+M000063,Chatterjee-Borde,Retail,Mumbai,Maharashtra,Neelima Jain,netra80@example.net,619686230,2025-01-11,Pending
+M000064,"Sandal, Sami and Kanda",Retail,Delhi,Delhi,Vansha Natarajan,madanomisha@example.org,9127684632,2023-11-28,Suspended
+M000065,Basu Group,Online Services,Chennai,Tamil Nadu,Oviya Tank,aarnav80@example.org,1395296853,2025-12-10,Active
+M000066,"Iyengar, Ratta and Parekh",Restaurants,Mumbai,Maharashtra,Harrison Mander,damini95@example.org,9101907033,2023-05-28,Suspended
+M000067,Dewan-Iyer,Electronics,Hyderabad,Telangana,Bimala Naidu,sara95@example.com,9168197140,2021-10-28,Active
+M000068,Padmanabhan Group,Fashion,Bengaluru,Karnataka,Zehaan Bora,tarachand@example.net,8908503787,2021-11-24,Suspended
+M000069,Sarraf Ltd,Retail,Jaipur,Rajasthan,Pavani Sheth,bimalasahni@example.org,2703046604,2025-02-24,Suspended
+M000070,Kala-Borah,Fashion,Delhi,Delhi,Tripti Doctor,singhalfaris@example.net,9123009560,2024-02-20,Active
+M000071,Contractor-Dayal,Grocery,Delhi,Delhi,Rehaan Gaba,vincentbedi@example.org,9144385710,2023-05-01,Suspended
+M000072,Jani and Sons,Electronics,Lucknow,Uttar Pradesh,Indira Bakshi,chakrikachaudhuri@example.net,9171466810,2023-05-10,Pending
+M000073,Bava-Bobal,Online Services,Jaipur,Rajasthan,Dayita Raval,xitivarkey@example.com,9174720872,2023-06-23,Pending
+M000074,"Halder, Oommen and Varty",Travel,Lucknow,Uttar Pradesh,Bhavya Dugar,isha29@example.com,9121082501,2023-05-03,Active
+M000075,Keer Inc,Restaurants,Hyderabad,Telangana,Qadim Varkey,urvashi72@example.org,9196720075,2023-12-05,Active
+M000076,Lal-Madan,Retail,Chennai,Tamil Nadu,Vritti Rajagopal,kumarvidhi@example.org,9128692603,2023-08-19,Active
+M000077,Boase and Sons,Grocery,Bengaluru,Karnataka,Ojasvi Pandey,bdhar@example.com,2596277460,2023-06-22,Suspended
+M000078,Gupta-Shetty,Grocery,Bengaluru,Karnataka,Fitan Mitra,fitan55@example.net,203748646,2026-09-06,Pending
+M000079,"Agarwal, Dalal and Krishnamurthy",Fashion,Delhi,Delhi,Brinda Bhatnagar,tanmayinarain@example.org,9139919375,2022-10-06,Pending
+M000080,Krishnamurthy LLC,Online Services,Chennai,Tamil Nadu,Chandran Gill,alexander81@example.com,9120956853,2023-09-10,Pending
+M000081,"Madan, Balan and Bahl",Travel,Mumbai,Maharashtra,Ria Tailor,badaminetra@example.net,9179592637,2024-11-12,Pending
+M000082,"Bobal, Pai and Luthra",Grocery,Kolkata,West Bengal,Omisha Choudhary,ldalia@example.org,245711788,2022-10-23,Suspended
+M000083,Wason Ltd,Entertainment,Mumbai,Maharashtra,Fariq Bajaj,waliyashoda@example.net,1132342846,2024-07-07,Active
+M000084,Joshi-Kata,Entertainment,Delhi,Delhi,Kala Narula,pooja14@example.org,9194979749,2022-01-04,Pending
+M000085,Sahni-Nagar,Travel,Ahmedabad,Gujarat,Ikshita Dasgupta,nagarwyatt@example.net,851839509,2026-05-27,Pending
+M000086,"Barad, Keer and Behl",Entertainment,Lucknow,Uttar Pradesh,Gopal Soni,buchnicholas@example.com,6291945568,2021-12-20,Pending
+M000087,Chowdhury Inc,Entertainment,Kolkata,West Bengal,Jagat Dhingra,diya87@example.org,9106766960,2024-08-20,Pending
+M000088,Manda-Borra,Travel,Bengaluru,Karnataka,Aarini Solanki,ganesansamuel@example.org,517649232,2025-11-06,Suspended
+M000089,Savant Ltd,Travel,Chennai,Tamil Nadu,Advika Shah,abhagat@example.com,4410114329,2026-01-05,Active
+M000090,Kara-Sahota,Grocery,Ahmedabad,Gujarat,Oliver Bava,venkataramanchakrika@example.net,605165796,2025-08-23,Pending
+M000091,Dhaliwal-Pandey,Health & Wellness,Hyderabad,Telangana,Arunima Chada,bluthra@example.net,445848304,2024-12-05,Active
+M000092,"Shanker, Lalla and Bora",Fashion,Kolkata,West Bengal,Yahvi Saran,jeremiah94@example.com,8750625855,2025-11-30,Pending
+M000093,Nath Inc,Travel,Hyderabad,Telangana,Bhanumati Rana,guneetnadig@example.com,9167335574,2022-10-17,Suspended
+M000094,Raju Ltd,Electronics,Kolkata,West Bengal,Vedant Sankar,ishanihans@example.com,9088277025,2026-05-19,Active
+M000095,Sehgal-Bali,Education,Chennai,Tamil Nadu,Charan Rana,xitibasak@example.com,9162061972,2026-03-29,Pending
+M000096,"Goyal, Chahal and Sachdeva",Grocery,Hyderabad,Telangana,Charita Tella,shauryachhabra@example.net,9162365328,2023-01-22,Suspended
+M000097,Sanghvi-Parmer,Health & Wellness,Chennai,Tamil Nadu,Anita Kamdar,shravyakonda@example.net,9187852028,2026-04-24,Suspended
+M000098,"Contractor, Butala and Khatri",Entertainment,Pune,Maharashtra,Bhavika Palla,iyengarladli@example.com,8642217183,2023-12-10,Pending
+M000099,Cheema-Dugar,Online Services,Hyderabad,Telangana,Upadhriti Bajwa,orinder21@example.net,9188198641,2023-01-23,Suspended
+M000100,"Banik, Raman and Sarma",Travel,Hyderabad,Telangana,Janya Dey,ridhibhatti@example.org,8381718239,2021-11-22,Active

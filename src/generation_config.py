@@ -1,0 +1,8 @@
+from datetime import date
+
+
+REFERENCE_DATE = date(2026, 10, 7)
+CUSTOMER_SEED = 42
+CARD_SEED = 43
+MERCHANT_SEED = 44
+TRANSACTION_SEED = 45
