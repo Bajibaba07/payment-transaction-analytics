@@ -1,112 +1,180 @@
 # Payment Transaction Analytics and Business Intelligence Platform
 
-This portfolio project demonstrates a complete workflow using synthetic payment data: generation, validation, Python cleaning and EDA, SQL analytics, optional MongoDB aggregations, Power BI modeling, and explainable business insights. It does not represent real Visa, bank, or customer data.
+A Python project for generating synthetic payment data, validating and preparing it for analysis, exploring business metrics, and presenting results through a Streamlit dashboard and a read-only FastAPI service.
 
-## Data model
+> **Synthetic data only:** Every record in this project is generated for demonstration. It does not contain real Visa, bank, customer, merchant, or payment data. Do not use the sample data or applications for real payment processing or fraud decisions.
 
-The relationship chain is `Customer -> Card -> Transaction -> Merchant`.
+## Project overview
 
-- `data/raw/` contains generated source CSV files.
-- `data/processed/` contains typed, deduplicated, dashboard-safe files.
-- `reports/` contains reproducible summary tables and anomaly flags.
-- `sql/` contains the MySQL schema and business queries.
-- `docs/` contains table, MongoDB, and Power BI documentation.
+The project demonstrates an analytics workflow from data generation through reporting:
 
-The card generator produces dashboard-safe card data and does not create card numbers or CVVs. The cleaner also removes those columns if they appear in an older raw file. The API, SQL schema, MongoDB export, and Power BI model use only dashboard-safe fields.
+- Generate related customer, card, merchant, and transaction CSV datasets with Faker and fixed random seeds.
+- Validate required fields, unique identifiers, relationships, customer/card ownership, age ranges, and positive finite transaction amounts.
+- Clean transaction data, derive month and status flags, and create dashboard-ready datasets and customer/merchant summaries.
+- Produce monthly and category performance reports, transaction-status summaries, and amount-anomaly review output.
+- Explore metrics using an interactive Streamlit dashboard and read-only FastAPI endpoints.
+- Find MySQL schema, load, quality-check, and business-query examples, plus optional MongoDB aggregation and Power BI guides.
 
-## Setup
+The amount anomaly script uses a simple z-score threshold to flag unusual amounts for **review**. It is an educational heuristic, not a fraud-detection model or a fraud verdict.
 
-```powershell
-py -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+## Data flow
+
+```text
+Faker-based Python generators
+  -> data/raw/
+      -> validate_data.py
+      -> clean_data.py -> data/processed/ -> Streamlit / FastAPI / SQL / BI
+      -> eda.py --------------------------> reports/
+      -> anomaly_detection.py ------------> reports/
 ```
 
-## Reproduce the pipeline
+The generators use fixed seeds, so regenerating the datasets is reproducible for the current code and dependencies. The cleaning step removes duplicate transaction IDs and transactions with non-positive or non-finite amounts. It also writes a public card dataset without sensitive card fields.
 
-Run from the project root. The generation order preserves foreign keys.
+## Repository structure
+
+```text
+api/                       FastAPI application
+dashboard/                 Streamlit dashboard
+data/raw/                  Generated source CSV datasets
+data/processed/            Cleaned datasets and summary tables
+docs/                      Table design and optional BI guides
+reports/                   Generated analysis CSV outputs
+sql/                       MySQL schema, import, checks, and queries
+src/                       Generators, validation, cleaning, and analysis
+tests/                     Pipeline, API, and dashboard-data tests
+.github/workflows/ci.yml   GitHub Actions validation workflow
+render.yaml                Render blueprint for the API
+requirements*.txt          Project and app-specific Python dependencies
+```
+
+Generated raw CSV files are ignored by Git via `.gitignore`. Run the generators before running the cleaning, analysis, dashboard, or API steps when their expected data files are not present.
+
+## Technology
+
+- **Python** for generation, validation, cleaning, and analysis
+- **Faker**, **pandas**, and **NumPy** for synthetic data and data processing
+- **Streamlit** for the interactive dashboard
+- **FastAPI** and **Uvicorn** for the read-only API
+- **MySQL** for the relational schema and query examples
+- **MongoDB** aggregation and **Power BI** are documented as optional analysis integrations
+
+Python 3.12 is configured in CI and in the Render blueprint. The root `requirements.txt` includes the dependencies used by the pipeline, dashboard, and API.
+
+## Quick start
+
+From the repository root, create a virtual environment and install dependencies.
+
+### Windows PowerShell
 
 ```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+### macOS or Linux
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+Generate, validate, and prepare the datasets:
+
+```bash
 python src/generate_customers.py
 python src/generate_cards.py
 python src/generate_merchants.py
 python src/generate_transactions.py
 python src/validate_data.py
 python src/clean_data.py
+```
+
+The transaction generator depends on the customer, card, and merchant source files, so run those generators first. The pipeline writes cleaned tables and summaries to `data/processed/`.
+
+Generate the analysis reports when needed:
+
+```bash
 python src/eda.py
 python src/anomaly_detection.py
 ```
 
-`validate_data.py` exits with status 1 when keys, completeness, relationships, customer ages, or amounts are invalid. All data generators use fixed random seeds and a fixed synthetic reference date so repeated runs produce the same datasets, including globally unique transaction IDs. Run the validation suite with `python -m unittest discover -s tests -v`; it covers data cleaning and validation, API response privacy and behavior, and dashboard data readiness.
+## Run the applications
 
-GitHub Actions runs the full data-generation and report pipeline and the same automated tests on every push and pull request.
+Run the Streamlit dashboard:
 
-## MySQL
-
-1. From PowerShell, run `Get-Content -Raw sql/01_schema.sql | mysql -u root -p`.
-2. From the project root, run `Get-Content -Raw sql/03_load_processed_data.sql | mysql --local-infile=1 -u root -p`. This intentionally replaces data in the dedicated `payment_analytics` tables; do not run it against a database containing user-owned data.
-3. Run `Get-Content -Raw sql/04_quality_checks.sql | mysql -u root -p` and confirm the loaded row counts match `src/validate_data.py` and all relationship checks report zero invalid links.
-4. Run `Get-Content -Raw sql/02_business_queries.sql | mysql -u root -p` for KPI, trend, category, customer, merchant-risk, and bank analysis.
-
-MySQL is the relational layer because foreign keys and repeatable joins are central to this project.
-
-## MongoDB
-
-MongoDB is optional and limited to flexible transaction exploration. Follow `docs/mongodb_analytics.md` to create a dashboard-safe JSON export and run aggregation pipelines. It is not used as a replacement for the relational model.
-
-## Power BI
-
-Import the processed CSV files and follow `docs/power_bi_guide.md` for relationships, page design, privacy boundaries, and DAX measures. Suggested pages are Executive Overview, Product and Bank, and Customer and Merchant.
-
-## Runnable dashboard
-
-The project also includes a Streamlit dashboard in `dashboard/app.py`. It reads only the processed files, supports category/status/bank filters, and displays KPI cards, trends, category performance, status analysis, bank/card analysis, top customers, and merchant failure rates.
-
-Install the project dependencies and run locally from the project root:
-
-```powershell
-pip install -r requirements.txt
+```bash
 python -m streamlit run dashboard/app.py
 ```
 
-Open `http://localhost:8501`. The local dashboard has been smoke-tested successfully on port 8501.
+Open `http://localhost:8501`. The dashboard reads the processed CSV files. Select at least one merchant category in the sidebar to display the KPIs, charts, and filtered tables; status and bank filters can further narrow the results.
 
-In VS Code, use **Terminal > Run Task > Run Payment Analytics Dashboard** to start the dashboard, or **Run Payment Analytics API** to start the API. The tasks use the workspace virtual environment and bind to localhost.
+Run the API in a separate terminal:
 
-To deploy on Streamlit Community Cloud, push this repository to GitHub and choose `dashboard/app.py` as the main file. The root `requirements.txt` includes the dashboard dependencies. The app expects the processed CSVs to be in the repository; rerun the pipeline and publish regenerated processed data when you want to refresh the dashboard.
-
-## Read-only API for other applications
-
-The project includes a public, read-only FastAPI service backed by the processed synthetic transactions. It does not load raw card data or merchant contact details, and it never returns card numbers, CVVs, or customer IDs. Generate processed data using the pipeline above, then start the API from the project root:
-
-```powershell
-pip install -r requirements.txt
+```bash
 python -m uvicorn api.app:app --reload
 ```
 
-Open `http://localhost:8000/docs` for interactive API documentation. Available endpoints:
+The local API is available at `http://localhost:8000`. FastAPI serves interactive documentation at `/docs` and the OpenAPI document at `/openapi.json`. The API needs `data/processed/transactions_clean.csv`; run the data pipeline first.
 
-- `GET /api/v1/summary`
-- `GET /api/v1/transactions?limit=50&offset=0&category=Retail&status=Completed&bank=HDFC%20Bank`
-- `GET /api/v1/categories`
-- `GET /api/v1/banks`
-- `GET /api/v1/merchants?limit=20`
-- `GET /health`
+The repository also includes VS Code tasks for starting the dashboard and API.
 
-The transactions endpoint defaults to 50 records per page and caps pages at 100. Filters are optional and case-insensitive. All endpoints are GET-only. Browser-based clients are allowed by default; set `API_ALLOWED_ORIGINS` to a comma-separated list of trusted origins when deploying the API for a specific frontend.
+## API reference
 
-To make the API reachable by other people, push the project to GitHub and create a Render Web Service from that repository. The included `render.yaml` installs the API dependencies, generates and validates fresh synthetic data during the build, cleans it into the dashboard-safe dataset, and starts the API. Once deployed, use the Render service URL in clients (for example, `<service-url>/api/v1/summary`). Older versions of `data/raw/cards.csv` are ignored by Git as a precaution; the current generator no longer creates card numbers or CVVs.
+All application endpoints are read-only `GET` routes.
 
-## How to explain the project
+| Route | Purpose |
+|---|---|
+| `/` | Service name and documentation links |
+| `/health` | Checks that processed transaction data is available |
+| `/api/v1/summary` | Transaction, completion, amount, success-rate, and active-customer summary |
+| `/api/v1/transactions` | Paginated transaction records; supports `category`, `status`, and `bank` filters |
+| `/api/v1/categories` | Transaction counts and completed amount by category |
+| `/api/v1/banks` | Transaction counts and completed amount by bank |
+| `/api/v1/merchants` | Merchant transaction, failure-rate, and completed-amount summaries |
 
-The analysis answers four practical questions: how payment activity changes over time, which categories and banks drive completed amount, where failures concentrate, and which customers or merchants require attention. The anomaly script uses a transparent amount z-score as a review signal; it is not a fraud verdict. Business claims should be calculated from the current generated files or database outputs rather than hard-coded in documentation.
+The transaction route defaults to `limit=50` and `offset=0`; `limit` must be between 1 and 100 and `offset` must be non-negative. The merchant route defaults to `limit=20`, with a maximum of 100.
 
-See [docs/final_submission.md](docs/final_submission.md) for the project summary, architecture, reproducible checks, limitations, and final publication checklist.
+The transaction response model omits customer and card identifiers and sensitive card fields. The API is not an authenticated payment service; keep it limited to the synthetic demonstration data.
 
-## Technology roles
+## SQL and optional analytics
 
-- Python, Pandas, and Faker generate and prepare synthetic data.
-- MySQL enforces relational structure and answers repeatable business questions.
-- MongoDB demonstrates document aggregations where flexible grouping is useful.
-- Power BI and DAX turn processed fact and dimension tables into interactive KPIs.
-- Reports are analyst-facing outputs and do not expose sensitive-looking card fields.
+- `sql/01_schema.sql` creates the MySQL database and tables.
+- `sql/02_business_queries.sql` contains KPI, trend, category, customer, merchant, and bank analysis queries.
+- `sql/03_load_processed_data.sql` loads the generated processed CSV files.
+- `sql/04_quality_checks.sql` checks row counts, relationships, ownership consistency, and sensitive-column presence.
+- `docs/mongodb_analytics.md` contains optional MongoDB import and aggregation examples.
+- `docs/power_bi_guide.md` describes a Power BI model, suggested report pages, and example DAX measures.
+
+MySQL must be installed and configured separately to execute the SQL scripts. **The data-load script deletes existing rows in its target tables before loading the generated data.** Use it only with the dedicated synthetic project database after confirming it contains no user-owned data.
+
+## Tests and continuous integration
+
+Run the repository's tests with:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The test suite covers transaction cleaning and validation, API summaries/filtering/pagination and response fields, and availability of the dashboard's processed data. The GitHub Actions workflow rebuilds the synthetic datasets and reports, validates the data, and runs the test suite for pushes and pull requests.
+
+## Hosted project links
+
+These project URLs are listed in the repository's existing documentation. Availability depends on the corresponding hosting services and deployments:
+
+- [Streamlit dashboard](https://payment-transaction-analytics.streamlit.app)
+- [FastAPI service](https://payment-transaction-analytics.onrender.com)
+- [Interactive API documentation](https://payment-transaction-analytics.onrender.com/docs)
+- [API health check](https://payment-transaction-analytics.onrender.com/health)
+
+The included `render.yaml` configures the API service to install its API dependencies, generate and validate the datasets during the build, and start Uvicorn using the port provided by Render.
+
+## Limitations and safe use
+
+- Generated values are examples; dashboard totals and trends are not evidence about real payment activity, banks, customers, or merchants.
+- Amount-based anomaly flags are review signals only. No model, ground truth, or fraud determination is provided.
+- The API and dashboard are demonstration applications, not production payment systems.
+- MySQL execution requires a separately configured server; MongoDB and Power BI are optional integrations.
