@@ -154,4 +154,31 @@ with merchant_table:
     merchant_table_data["failure_rate"] = merchant_table_data["failure_rate"].map(lambda value: f"{value:.1%}")
     st.dataframe(merchant_table_data, width="stretch", hide_index=True)
 
-st.caption(f"Showing {len(filtered):,} of {len(transactions):,} transactions. Card numbers and CVVs are intentionally excluded.")
+st.subheader("Filtered Transactions")
+
+display_columns = [
+    "transaction_id",
+    "merchant_name",
+    "merchant_category",
+    "transaction_date",
+    "amount",
+    "transaction_status",
+    "payment_method",
+    "merchant_city",
+    "merchant_state",
+    "bank_name",
+    "card_type",
+]
+
+filtered_display = filtered[display_columns].copy()
+
+st.dataframe(
+    filtered_display.sort_values("transaction_date", ascending=False),
+    width="stretch",
+    hide_index=True,
+)
+
+st.caption(
+    f"Showing {len(filtered):,} of {len(transactions):,} transactions. "
+    "Card numbers and CVVs are intentionally excluded."
+)
