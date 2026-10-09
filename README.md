@@ -26,6 +26,7 @@ Faker-based Python generators
         -> clean_data.py -> data/processed/ -> Streamlit / FastAPI / SQL / BI
         -> eda.py --------------------------> reports/
         -> anomaly_detection.py ------------> reports/
+
 ```
 
 The generators use configured random seeds and a fixed reference date. Faker is pinned in the API/runtime dependency file to improve repeatability across environments. Generator repeatability tests pass in the current environment; byte-for-byte parity with a historical Render environment has not been independently established. Raw CSVs are ignored by Git and are not checked in. The cleaning step removes duplicate transaction IDs and transactions with non-positive or non-finite amounts. It also writes a public card dataset without sensitive card fields.
@@ -34,17 +35,17 @@ The generators use configured random seeds and a fixed reference date. Faker is 
 
 ```text
 api/                      FastAPI application
-dashboard/                 Streamlit dashboard
-data/raw/                  Generated source CSV datasets (not tracked by Git)
-data/processed/            Cleaned datasets and summary tables
-docs/                      Table design and optional BI guides
-reports/                   Generated analysis CSV outputs
+dashboard/                Streamlit dashboard
+data/raw/                 Generated source CSV datasets (not tracked by Git)
+data/processed/           Cleaned datasets and summary tables
+docs/                     Table design and optional BI guides
+reports/                  Generated analysis CSV outputs
 sql/                       MySQL schema, import, checks, and queries
 src/                       Generators, validation, cleaning, and analysis
 tests/                     Pipeline, API, and dashboard-data tests
-.github/workflows/ci.yml   GitHub Actions validation workflow
-render.yaml                Render blueprint for the API
-requirements*.txt          Project and app-specific Python dependencies
+.github/workflows/ci.yml  GitHub Actions validation workflow
+render.yaml               Render blueprint for the API
+requirements*.txt         Project and app-specific Python dependencies
 ```
 
 Generated raw CSV files are ignored by Git via `.gitignore`. Run the generators before running the cleaning, analysis, dashboard, or API steps when their expected data files are not present. The six dashboard-safe processed CSVs are tracked by Git according to the latest repository audit. Raw card-number/CVV data must not be committed or exposed through the API or dashboard.
@@ -72,8 +73,6 @@ py -3.12 -m venv .venv
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt -r requirements-api.txt
 ```
-
-If Python 3.12 is not installed, use an installed Python version compatible with the packages, but note that the CI and Render target is Python 3.12.8.
 
 ### macOS or Linux
 
@@ -175,19 +174,25 @@ The test suite covers transaction cleaning and validation, API summaries/filteri
 
 ### Streamlit Community Cloud
 
-Deploy the repository's `master` branch with `dashboard/app.py` as the app entrypoint. Streamlit Community Cloud should use the root `requirements.txt` for the dashboard's dependencies. The six dashboard-safe CSVs under `data/processed/` are tracked in Git according to the latest repository audit. Raw source CSVs are ignored and are not needed by the dashboard.
+[Public dashboard](https://payment-transaction-analytics.streamlit.app/)
 
-Before considering the dashboard deployment complete, confirm that the app is publicly accessible and that it can load all required processed CSV files. A previous check did not establish public dashboard access, so the live dashboard URL is not claimed here as verified.
+The app entry point is `dashboard/app.py`. It uses the six dashboard-safe processed CSV files under `data/processed/`. The public dashboard has been verified to load and display KPIs, charts, tables, and interactive filters.
 
 ### Render API
 
-Deploy the existing `render.yaml` blueprint. Its build installs `requirements-api.txt`, creates the `data/raw` and `data/processed` directories, runs the four generators in dependency order, validates the generated data, and cleans it. The service starts FastAPI with Uvicorn on `0.0.0.0:$PORT`; `/health` is the configured health check. The Render configuration targets Python 3.12.8.
+- API base URL: [https://payment-transaction-analytics.onrender.com](https://payment-transaction-analytics.onrender.com/)
+- API documentation: [https://payment-transaction-analytics.onrender.com/docs](https://payment-transaction-analytics.onrender.com/docs)
+- Health check: [https://payment-transaction-analytics.onrender.com/health](https://payment-transaction-analytics.onrender.com/health)
+- Summary endpoint: [https://payment-transaction-analytics.onrender.com/api/v1/summary](https://payment-transaction-analytics.onrender.com/api/v1/summary)
 
-During the latest manual verification reported for this project, `/health` returned `{"status":"ok","data_available":true}`, and `/api/v1/summary` returned HTTP 200 with 964 transactions. The summary contained 681 completed transactions, a completed amount of INR 2,332,474.66, a success rate of about 70.64%, and 90 active customers. The other API endpoints and exact Python 3.12.8 runtime still need to be verified before the entire deployment can be described as complete.
+The health check returned `{"status":"ok","data_available":true}`. The summary endpoint returned 964 total transactions, 681 completed transactions, INR 2,332,474.66 in completed amounts, a success rate of approximately 70.64%, and 90 active customers.
 
-- API health: <https://payment-transaction-analytics.onrender.com/health>
-- API summary: <https://payment-transaction-analytics.onrender.com/api/v1/summary>
-- Interactive API documentation: <https://payment-transaction-analytics.onrender.com/docs>
+### Deployment and data safety
+
+- The project uses synthetic demonstration data only.
+- Raw source CSV files are excluded from Git.
+- Raw card numbers and CVVs must never be exposed through the public dashboard, API, or repository.
+- MySQL, MongoDB, and Power BI are optional integrations requiring separate configuration.
 
 ## Limitations and safe use
 
