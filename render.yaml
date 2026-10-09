@@ -3,6 +3,7 @@ services:
     name: payment-analytics-api
     runtime: python
     buildCommand: >-
+      mkdir -p data/raw data/processed &&
       pip install -r requirements-api.txt &&
       python src/generate_customers.py &&
       python src/generate_cards.py &&

@@ -111,7 +111,10 @@ def _load_transactions(_modified_ns: int, _file_size: int) -> pd.DataFrame:
     if not TRANSACTIONS_PATH.is_file():
         raise HTTPException(
             status_code=503,
-            detail="Processed transaction data is missing. Run src/clean_data.py first.",
+            detail=(
+                "Processed transaction data is missing. "
+                "Run src/clean_data.py first."
+            ),
         )
 
     transactions = pd.read_csv(TRANSACTIONS_PATH)
@@ -133,7 +136,10 @@ def load_transactions() -> pd.DataFrame:
     except FileNotFoundError as error:
         raise HTTPException(
             status_code=503,
-            detail="Processed transaction data is missing. Run src/clean_data.py first.",
+            detail=(
+                "Processed transaction data is missing. "
+                "Run src/clean_data.py first."
+            ),
         ) from error
     return _load_transactions(file_stats.st_mtime_ns, file_stats.st_size)
 
@@ -197,10 +203,13 @@ def get_transactions(
     ):
         if value:
             filtered = filtered[
-                filtered[column].astype("string").str.lower() == value.strip().lower()
+                filtered[column]
+                .astype("string")
+                .str.lower()
+                .eq(value.strip().lower())
             ]
 
-    rows = filtered.iloc[offset : offset + limit]
+    rows = filtered.iloc[offset:offset + limit]
     items = [
         TransactionRecord(
             transaction_id=str(row["transaction_id"]),

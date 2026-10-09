@@ -43,7 +43,11 @@ for i in range(1, 101):
 
     city, state = random.choice(cities)
 
-    phone_digits = ''.join(ch for ch in fake.phone_number() if ch.isdigit())[:10]
+    phone_digits = "".join(
+        character
+        for character in fake.phone_number()
+        if character.isdigit()
+    )[:10]
 
     customer = {
         "customer_id": f"C{i:06}",
@@ -67,7 +71,13 @@ for i in range(1, 101):
 
 df = pd.DataFrame(customers)
 
-output_path = Path(__file__).resolve().parents[1] / "data" / "raw" / "customers.csv"
+output_path = (
+    Path(__file__).resolve().parents[1]
+    / "data"
+    / "raw"
+    / "customers.csv"
+)
+output_path.parent.mkdir(parents=True, exist_ok=True)
 df.to_csv(output_path, index=False)
 
 print(f"{len(customers)} customers saved to {output_path}")

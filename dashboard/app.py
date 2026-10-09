@@ -81,46 +81,30 @@ except FileNotFoundError:
 
 
 st.title("Payment Transaction Analytics")
-st.caption(
-    "Synthetic data only | Dashboard-safe fields | INR"
-)
+st.caption("Synthetic data only | Dashboard-safe fields | INR")
 
-
-# ============================================================
-# SIDEBAR FILTERS
-# ============================================================
 
 with st.sidebar:
     st.header("Filters")
 
     categories = st.multiselect(
         "Merchant category",
-        sorted(
-            transactions["merchant_category"].unique()
-        ),
+        sorted(transactions["merchant_category"].unique()),
         default=[],
     )
 
     statuses = st.multiselect(
         "Transaction status",
-        sorted(
-            transactions["transaction_status"].unique()
-        ),
+        sorted(transactions["transaction_status"].unique()),
         default=[],
     )
 
     banks = st.multiselect(
         "Bank",
-        sorted(
-            transactions["bank_name"].unique()
-        ),
+        sorted(transactions["bank_name"].unique()),
         default=[],
     )
 
-
-# ============================================================
-# FILTER DATA
-# ============================================================
 
 filtered = transactions.copy()
 
@@ -140,56 +124,32 @@ if banks:
     ]
 
 
-completed = filtered[
-    filtered["is_successful"]
-]
+completed = filtered[filtered["is_successful"]]
 
-
-# ============================================================
-# EXECUTIVE OVERVIEW
-# ============================================================
 
 st.subheader("Executive overview")
 
 metric_columns = st.columns(4)
 
 if not categories:
-
-    metric_columns[0].metric(
-        "Completed amount",
-        "INR 0"
-    )
-
-    metric_columns[1].metric(
-        "Transactions",
-        "0"
-    )
-
-    metric_columns[2].metric(
-        "Active customers",
-        "0"
-    )
-
-    metric_columns[3].metric(
-        "Success rate",
-        "0%"
-    )
-
+    metric_columns[0].metric("Completed amount", "INR 0")
+    metric_columns[1].metric("Transactions", "0")
+    metric_columns[2].metric("Active customers", "0")
+    metric_columns[3].metric("Success rate", "0%")
 else:
-
     metric_columns[0].metric(
         "Completed amount",
-        f"INR {completed['amount'].sum():,.0f}"
+        f"INR {completed['amount'].sum():,.0f}",
     )
 
     metric_columns[1].metric(
         "Transactions",
-        f"{len(filtered):,}"
+        f"{len(filtered):,}",
     )
 
     metric_columns[2].metric(
         "Active customers",
-        f"{filtered['customer_id'].nunique():,}"
+        f"{filtered['customer_id'].nunique():,}",
     )
 
     success_rate = (
@@ -200,27 +160,15 @@ else:
 
     metric_columns[3].metric(
         "Success rate",
-        f"{success_rate:.1%}"
+        f"{success_rate:.1%}",
     )
 
 
-# ============================================================
-# CHARTS
-# ============================================================
-
 if categories:
-
-    # --------------------------------------------------------
-    # Monthly trend + Category amount
-    # --------------------------------------------------------
-
     left, right = st.columns(2)
 
     with left:
-
-        st.subheader(
-            "Monthly transaction trend"
-        )
+        st.subheader("Monthly transaction trend")
 
         monthly = (
             filtered.assign(
@@ -237,13 +185,13 @@ if categories:
                     lambda values: values[
                         filtered.loc[
                             values.index,
-                            "is_successful"
+                            "is_successful",
                         ]
                     ].sum(),
                 ),
                 transactions=(
                     "transaction_id",
-                    "count"
+                    "count",
                 ),
             )
         )
@@ -257,10 +205,7 @@ if categories:
         )
 
     with right:
-
-        st.subheader(
-            "Completed amount by category"
-        )
+        st.subheader("Completed amount by category")
 
         category = (
             completed
@@ -271,30 +216,17 @@ if categories:
 
         st.bar_chart(category)
 
-
-    # --------------------------------------------------------
-    # Transaction status + Bank/card
-    # --------------------------------------------------------
-
     left, right = st.columns(2)
 
     with left:
-
-        st.subheader(
-            "Transaction status"
-        )
+        st.subheader("Transaction status")
 
         st.bar_chart(
-            filtered[
-                "transaction_status"
-            ].value_counts()
+            filtered["transaction_status"].value_counts()
         )
 
     with right:
-
-        st.subheader(
-            "Bank and card type"
-        )
+        st.subheader("Bank and card type")
 
         bank_mix = (
             completed
@@ -310,42 +242,32 @@ if categories:
 
         st.bar_chart(bank_mix)
 
-
-    # ========================================================
-    # CUSTOMER AND MERCHANT INSIGHTS
-    # ========================================================
-
-    st.subheader(
-        "Customer and merchant insights"
-    )
+    st.subheader("Customer and merchant insights")
 
     customer_table, merchant_table = st.columns(2)
 
     with customer_table:
-
-        st.markdown(
-            "**Top customers by completed spend**"
-        )
+        st.markdown("**Top customers by completed spend**")
 
         top_customers = (
             completed
             .groupby(
                 "customer_id",
-                as_index=False
+                as_index=False,
             )
             .agg(
                 completed_spend=(
                     "amount",
-                    "sum"
+                    "sum",
                 ),
                 transactions=(
                     "transaction_id",
-                    "count"
+                    "count",
                 ),
             )
             .sort_values(
                 "completed_spend",
-                ascending=False
+                ascending=False,
             )
             .head(10)
         )
@@ -357,10 +279,7 @@ if categories:
         )
 
     with merchant_table:
-
-        st.markdown(
-            "**Merchants with highest failure rate**"
-        )
+        st.markdown("**Merchants with highest failure rate**")
 
         merchant_table_data = (
             filtered
@@ -375,31 +294,28 @@ if categories:
             .agg(
                 transactions=(
                     "transaction_id",
-                    "count"
+                    "count",
                 ),
                 failure_rate=(
                     "is_failure",
-                    "mean"
+                    "mean",
                 ),
                 total_amount=(
                     "amount",
-                    "sum"
+                    "sum",
                 ),
             )
             .query("transactions >= 5")
             .sort_values(
                 "failure_rate",
-                ascending=False
+                ascending=False,
             )
             .head(10)
         )
 
-        merchant_table_data[
-            "failure_rate"
-        ] = merchant_table_data[
-            "failure_rate"
-        ].map(
-            lambda value: f"{value:.1%}"
+        merchant_table_data["failure_rate"] = (
+            merchant_table_data["failure_rate"]
+            .map(lambda value: f"{value:.1%}")
         )
 
         st.dataframe(
@@ -408,14 +324,7 @@ if categories:
             hide_index=True,
         )
 
-
-    # ========================================================
-    # FILTERED TRANSACTIONS
-    # ========================================================
-
-    st.subheader(
-        "Filtered Transactions"
-    )
+    st.subheader("Filtered Transactions")
 
     display_columns = [
         "transaction_id",
@@ -431,9 +340,7 @@ if categories:
         "card_type",
     ]
 
-    filtered_display = filtered[
-        display_columns
-    ].copy()
+    filtered_display = filtered[display_columns].copy()
 
     st.dataframe(
         filtered_display.sort_values(
@@ -445,17 +352,11 @@ if categories:
     )
 
     st.caption(
-        f"Showing {len(filtered):,} "
-        f"of {len(transactions):,} transactions. "
+        f"Showing {len(filtered):,} of "
+        f"{len(transactions):,} transactions. "
         "Card numbers and CVVs are intentionally excluded."
     )
-
 else:
-
-    # ========================================================
-    # NO CATEGORY SELECTED
-    # ========================================================
-
     st.info(
         "Select at least one merchant category "
         "from the sidebar to view analytics."

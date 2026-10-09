@@ -14,12 +14,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.12.8"
           cache: pip
       - name: Install project dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dashboard.txt -r requirements-api.txt
+      - name: Compile project modules
+        run: python -m compileall src api dashboard tests
       - name: Rebuild synthetic datasets and reports
         run: |
           python src/generate_customers.py

@@ -8,34 +8,34 @@ A Python project for generating synthetic payment data, validating and preparing
 
 The project demonstrates an analytics workflow from data generation through reporting:
 
-- Generate related customer, card, merchant, and transaction CSV datasets with Faker and fixed random seeds.
-- Validate required fields, unique identifiers, relationships, customer/card ownership, age ranges, and positive finite transaction amounts.
+- Generate related customer, card, merchant, and transaction CSV datasets with Faker and configured random seeds.
+- Validate required fields, unique identifiers, relationships, customer/card ownership, valid dates, allowed statuses and categories, age ranges, and positive finite transaction amounts.
 - Clean transaction data, derive month and status flags, and create dashboard-ready datasets and customer/merchant summaries.
 - Produce monthly and category performance reports, transaction-status summaries, and amount-anomaly review output.
 - Explore metrics using an interactive Streamlit dashboard and read-only FastAPI endpoints.
 - Find MySQL schema, load, quality-check, and business-query examples, plus optional MongoDB aggregation and Power BI guides.
 
-The amount anomaly script uses a simple z-score threshold to flag unusual amounts for **review**. It is an educational heuristic, not a fraud-detection model or a fraud verdict.
+The amount-anomaly script uses a simple z-score threshold to flag unusual amounts for **review**. It is an educational heuristic, not a fraud-detection model or a fraud verdict.
 
 ## Data flow
 
 ```text
 Faker-based Python generators
-  -> data/raw/
-      -> validate_data.py
-      -> clean_data.py -> data/processed/ -> Streamlit / FastAPI / SQL / BI
-      -> eda.py --------------------------> reports/
-      -> anomaly_detection.py ------------> reports/
+    -> data/raw/
+        -> validate_data.py
+        -> clean_data.py -> data/processed/ -> Streamlit / FastAPI / SQL / BI
+        -> eda.py --------------------------> reports/
+        -> anomaly_detection.py ------------> reports/
 ```
 
-The generators use fixed seeds, so regenerating the datasets is reproducible for the current code and dependencies. The cleaning step removes duplicate transaction IDs and transactions with non-positive or non-finite amounts. It also writes a public card dataset without sensitive card fields.
+The generators use configured random seeds and a fixed reference date. Faker is pinned in the API/runtime dependency file to improve repeatability across environments. Generator repeatability tests pass in the current environment; byte-for-byte parity with a historical Render environment has not been independently established. Raw CSVs are ignored by Git and are not checked in. The cleaning step removes duplicate transaction IDs and transactions with non-positive or non-finite amounts. It also writes a public card dataset without sensitive card fields.
 
 ## Repository structure
 
 ```text
-api/                       FastAPI application
+api/                      FastAPI application
 dashboard/                 Streamlit dashboard
-data/raw/                  Generated source CSV datasets
+data/raw/                  Generated source CSV datasets (not tracked by Git)
 data/processed/            Cleaned datasets and summary tables
 docs/                      Table design and optional BI guides
 reports/                   Generated analysis CSV outputs
@@ -47,7 +47,7 @@ render.yaml                Render blueprint for the API
 requirements*.txt          Project and app-specific Python dependencies
 ```
 
-Generated raw CSV files are ignored by Git via `.gitignore`. Run the generators before running the cleaning, analysis, dashboard, or API steps when their expected data files are not present.
+Generated raw CSV files are ignored by Git via `.gitignore`. Run the generators before running the cleaning, analysis, dashboard, or API steps when their expected data files are not present. The six dashboard-safe processed CSVs are tracked by Git according to the latest repository audit. Raw card-number/CVV data must not be committed or exposed through the API or dashboard.
 
 ## Technology
 
@@ -58,11 +58,11 @@ Generated raw CSV files are ignored by Git via `.gitignore`. Run the generators 
 - **MySQL** for the relational schema and query examples
 - **MongoDB** aggregation and **Power BI** are documented as optional analysis integrations
 
-Python 3.12 is configured in CI and in the Render blueprint. The root `requirements.txt` includes the dependencies used by the pipeline, dashboard, and API.
+CI and Render are configured for Python 3.12.8. The local audit environment used Python 3.14.4, so Python 3.12.8 was not tested locally. The root `requirements.txt` contains the project's pipeline and dashboard dependencies and includes FastAPI. Render installs pinned direct API and generation dependencies from `requirements-api.txt`; transitive dependencies are resolved by pip and are not individually pinned.
 
 ## Quick start
 
-From the repository root, create a virtual environment and install dependencies.
+From the repository root, create a virtual environment and install the project dependencies.
 
 ### Windows PowerShell
 
@@ -70,8 +70,10 @@ From the repository root, create a virtual environment and install dependencies.
 py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+python -m pip install -r requirements.txt -r requirements-api.txt
 ```
+
+If Python 3.12 is not installed, use an installed Python version compatible with the packages, but note that the CI and Render target is Python 3.12.8.
 
 ### macOS or Linux
 
@@ -79,7 +81,7 @@ python -m pip install -r requirements.txt
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+python -m pip install -r requirements.txt -r requirements-api.txt
 ```
 
 Generate, validate, and prepare the datasets:
@@ -104,7 +106,7 @@ python src/anomaly_detection.py
 
 ## Run the applications
 
-Run the Streamlit dashboard:
+### Streamlit dashboard
 
 ```bash
 python -m streamlit run dashboard/app.py
@@ -112,7 +114,9 @@ python -m streamlit run dashboard/app.py
 
 Open `http://localhost:8501`. The dashboard reads the processed CSV files. Select at least one merchant category in the sidebar to display the KPIs, charts, and filtered tables; status and bank filters can further narrow the results.
 
-Run the API in a separate terminal:
+### FastAPI
+
+In a separate terminal, with the virtual environment activated:
 
 ```bash
 python -m uvicorn api.app:app --reload
@@ -138,7 +142,7 @@ All application endpoints are read-only `GET` routes.
 
 The transaction route defaults to `limit=50` and `offset=0`; `limit` must be between 1 and 100 and `offset` must be non-negative. The merchant route defaults to `limit=20`, with a maximum of 100.
 
-The transaction response model omits customer and card identifiers and sensitive card fields. The API is not an authenticated payment service; keep it limited to the synthetic demonstration data.
+The transaction response model omits customer and card identifiers and sensitive card fields. The API is not an authenticated payment service; keep it limited to synthetic demonstration data.
 
 ## SQL and optional analytics
 
@@ -159,22 +163,35 @@ Run the repository's tests with:
 python -m unittest discover -s tests -v
 ```
 
-The test suite covers transaction cleaning and validation, API summaries/filtering/pagination and response fields, and availability of the dashboard's processed data. The GitHub Actions workflow rebuilds the synthetic datasets and reports, validates the data, and runs the test suite for pushes and pull requests.
+The latest reported local test run passed **20 tests**. The following compilation check also completed successfully:
 
-## Hosted project links
+```bash
+python -m compileall src api dashboard tests
+```
 
-These project URLs are listed in the repository's existing documentation. Availability depends on the corresponding hosting services and deployments:
+The test suite covers transaction cleaning and validation, API summaries/filtering/pagination and response fields, generator repeatability, and availability of the dashboard's processed data. The GitHub Actions workflow compiles the project, rebuilds the synthetic datasets and reports, validates the data, and runs the test suite for pushes and pull requests. Local testing was performed with Python 3.14.4; the configured Python 3.12.8 runtime remains to be verified by CI/hosted execution.
 
-- [Streamlit dashboard](https://payment-transaction-analytics.streamlit.app)
-- [FastAPI service](https://payment-transaction-analytics.onrender.com)
-- [Interactive API documentation](https://payment-transaction-analytics.onrender.com/docs)
-- [API health check](https://payment-transaction-analytics.onrender.com/health)
+## Deployment
 
-The included `render.yaml` configures the API service to install its API dependencies, generate and validate the datasets during the build, and start Uvicorn using the port provided by Render.
+### Streamlit Community Cloud
+
+Deploy the repository's `master` branch with `dashboard/app.py` as the app entrypoint. Streamlit Community Cloud should use the root `requirements.txt` for the dashboard's dependencies. The six dashboard-safe CSVs under `data/processed/` are tracked in Git according to the latest repository audit. Raw source CSVs are ignored and are not needed by the dashboard.
+
+Before considering the dashboard deployment complete, confirm that the app is publicly accessible and that it can load all required processed CSV files. A previous check did not establish public dashboard access, so the live dashboard URL is not claimed here as verified.
+
+### Render API
+
+Deploy the existing `render.yaml` blueprint. Its build installs `requirements-api.txt`, creates the `data/raw` and `data/processed` directories, runs the four generators in dependency order, validates the generated data, and cleans it. The service starts FastAPI with Uvicorn on `0.0.0.0:$PORT`; `/health` is the configured health check. The Render configuration targets Python 3.12.8.
+
+During the latest manual verification reported for this project, `/health` returned `{"status":"ok","data_available":true}`, and `/api/v1/summary` returned HTTP 200 with 964 transactions. The summary contained 681 completed transactions, a completed amount of INR 2,332,474.66, a success rate of about 70.64%, and 90 active customers. The other API endpoints and exact Python 3.12.8 runtime still need to be verified before the entire deployment can be described as complete.
+
+- API health: <https://payment-transaction-analytics.onrender.com/health>
+- API summary: <https://payment-transaction-analytics.onrender.com/api/v1/summary>
+- Interactive API documentation: <https://payment-transaction-analytics.onrender.com/docs>
 
 ## Limitations and safe use
 
 - Generated values are examples; dashboard totals and trends are not evidence about real payment activity, banks, customers, or merchants.
 - Amount-based anomaly flags are review signals only. No model, ground truth, or fraud determination is provided.
 - The API and dashboard are demonstration applications, not production payment systems.
-- MySQL execution requires a separately configured server; MongoDB and Power BI are optional integrations.
+- MySQL SQL scripts, MongoDB examples, and the Power BI guide are optional integrations; they were not executed or validated against those products during the latest reported audit.
