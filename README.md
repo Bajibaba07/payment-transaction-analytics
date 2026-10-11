@@ -162,7 +162,7 @@ Run the repository's tests with:
 python -m unittest discover -s tests -v
 ```
 
-The latest reported local test run passed **20 tests**. The following compilation check also completed successfully:
+The latest reported local test run passed **53 tests**. The following compilation check also completed successfully:
 
 ```bash
 python -m compileall src api dashboard tests
