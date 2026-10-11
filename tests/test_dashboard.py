@@ -1,3 +1,5 @@
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -9,6 +11,17 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class DashboardTests(unittest.TestCase):
+    def test_dashboard_entrypoint_imports_root_chatbots_from_its_directory(self):
+        result = subprocess.run(
+            [sys.executable, "-c", "import runpy; runpy.run_path('app.py')"],
+            cwd=ROOT / "dashboard",
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_dashboard_data_is_available_and_public_card_data_is_safe(self):
         data_dir = ROOT / "data" / "processed"
         transactions = pd.read_csv(data_dir / "transactions_clean.csv")
