@@ -5,6 +5,13 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
+from chatbots.analytics import snapshot_from_dataframe
+from chatbots.streamlit_ui import (
+    configured_provider,
+    render_analytics_chat,
+    render_support_chat,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data" / "processed"
@@ -77,6 +84,25 @@ except FileNotFoundError:
     st.error(
         "Processed data is missing. Run src/clean_data.py first."
     )
+    st.stop()
+
+
+page = st.sidebar.radio(
+    "Go to",
+    ["Dashboard", "Analytics Chatbot", "Payment Support Chatbot"],
+    key="application_page",
+)
+
+if page == "Analytics Chatbot":
+    provider = configured_provider()
+    render_analytics_chat(
+        snapshot_from_dataframe(transactions),
+        provider=provider,
+    )
+    st.stop()
+
+if page == "Payment Support Chatbot":
+    render_support_chat(provider=configured_provider())
     st.stop()
 
 

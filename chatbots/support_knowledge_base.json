@@ -1,0 +1,30 @@
+{
+  "failed_payment": {
+    "keywords": ["failed", "failure", "declined", "decline", "rejected", "didn't go through", "did not go through", "not successful", "unsuccessful payment", "failed transaction", "card transaction failed", "no successful payment", "money taken"],
+    "answer": "If a payment is marked failed, check its final status in your bank or payment app. If the amount was debited, reversal handling and timing depend on the bank and payment method. Contact the merchant or payment provider through its official support channel with the transaction reference. Do not share a card number, CVV, PIN, or OTP."
+  },
+  "debited_without_success": {
+    "keywords": ["debited but", "debited", "money deducted", "money was deducted", "amount deducted", "amount was debited", "charged but", "charged twice", "duplicate charge", "account was debited", "deducted without", "deducted but no order", "debited but no order", "paid but order", "paid but no confirmation", "no confirmation", "merchant did not receive", "merchant didn't receive", "order not received"],
+    "answer": "If your account was debited but the payment or order did not complete, check the final payment status in your bank or payment app and avoid repeated attempts while it is unresolved. Reversal handling and timing depend on the bank and payment method. Contact the merchant or payment provider through its official support channel with the transaction reference. Never share a card number, CVV, PIN, password, or OTP."
+  },
+  "pending_payment": {
+    "keywords": ["pending", "pending charge", "processing", "not completed", "still processing", "awaiting confirmation", "waiting for confirmation", "in progress", "stuck"],
+    "answer": "A pending payment has not reached a final status. Check the bank or payment app before trying again to avoid duplicate attempts. If it remains pending, contact the merchant or payment provider through its official support channel with the transaction reference. Do not share a card number, CVV, PIN, or OTP."
+  },
+  "refund": {
+    "keywords": ["refund", "refund status", "refund not received", "refund not arrived", "track refund", "refund timeframe", "refund approved", "money back", "money has not returned", "reversal", "reimburse", "return my money"],
+    "answer": "For a refund, first confirm with the merchant that it was approved and ask for its reference. Refund processing time depends on the merchant, bank, and payment method. If it does not appear after the timeframe they provide, contact the merchant or bank through an official channel. Never share a card number, CVV, PIN, or OTP."
+  },
+  "payment_faq": {
+    "keywords": ["payment", "pay", "charge", "transaction", "help"],
+    "answer": "For a payment question, check the final status and reference in your bank or payment app, then contact the merchant or payment provider through its official support channel if you need account-specific help. This demo cannot inspect individual payments. Never share a card number, CVV, PIN, password, or OTP in chat."
+  },
+  "troubleshooting": {
+    "keywords": ["troubleshoot", "troubleshooting", "error", "not working", "issue", "problem"],
+    "answer": "For a payment issue, check your internet connection and the final status in your bank or payment app. Avoid repeated attempts while a payment is pending. For account-specific help, contact the merchant or payment provider through its official support channel. This demo cannot access individual payment records. Never share a card number, CVV, PIN, password, or OTP."
+  },
+  "complaint": {
+    "keywords": ["complaint", "complain", "dispute", "unauthorized payment", "unrecognized charge", "charge I don't recognize", "complaint process", "raise a concern", "report a problem"],
+    "answer": "To raise a complaint, contact the merchant or payment provider through its official support channel and include the transaction reference and a description of the issue. Do not include card numbers, CVVs, PINs, passwords, or OTPs. This demo cannot file complaints, access individual payment records, or process payments or refunds."
+  }
+}
